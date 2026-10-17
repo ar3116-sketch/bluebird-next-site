@@ -1,0 +1,84 @@
+{
+ "rows": [
+  {
+   "label": "Range at 14 m/s cruise",
+   "bluebird": 57.6,
+   "next": 89.7,
+   "unit": "km",
+   "src_bluebird": "sparrow aero/results.yaml",
+   "src_next": "aero/next/results.yaml"
+  },
+  {
+   "label": "Endurance at cruise",
+   "bluebird": 1.14,
+   "next": 1.78,
+   "unit": "h",
+   "src_bluebird": "sparrow aero/results.yaml",
+   "src_next": "aero/next/results.yaml"
+  },
+  {
+   "label": "Usable battery energy",
+   "bluebird": 103.7,
+   "next": 172.8,
+   "unit": "Wh",
+   "src_bluebird": "sparrow aero/results.yaml",
+   "src_next": "aero/next/results.yaml"
+  },
+  {
+   "label": "Cruise electrical power",
+   "bluebird": 72.5,
+   "next": 77.7,
+   "unit": "W",
+   "src_bluebird": "sparrow aero/results.yaml",
+   "src_next": "aero/next/results.yaml"
+  },
+  {
+   "label": "Take-off mass",
+   "bluebird": 2.65,
+   "next": 2.65,
+   "unit": "kg",
+   "src_bluebird": "sparrow aircraft_mass.yaml",
+   "src_next": "next_fit.yaml layout_1p35"
+  },
+  {
+   "label": "Static margin",
+   "bluebird": 8.0,
+   "next": 8.0,
+   "unit": "%",
+   "src_bluebird": "sparrow aircraft_mass.yaml",
+   "src_next": "next_fit.yaml layout_1p35"
+  },
+  {
+   "label": "Stall speed (1 g)",
+   "bluebird": 9.5,
+   "next": 9.5,
+   "unit": "m/s",
+   "src_bluebird": "sparrow aero/results.yaml",
+   "src_next": "aero/next/results.yaml"
+  },
+  {
+   "label": "Cruise L/D",
+   "bluebird": 11.7,
+   "next": 11.6,
+   "unit": "",
+   "src_bluebird": "sparrow aero/results.yaml",
+   "src_next": "aero/next/results.yaml"
+  },
+  {
+   "label": "Centre-body depth at x 140",
+   "bluebird": 60.3,
+   "next": 70.8,
+   "unit": "mm",
+   "src_bluebird": "oml_next.yaml",
+   "src_next": "oml_next.yaml"
+  },
+  {
+   "label": "Whole-aircraft volume",
+   "bluebird": 6.75,
+   "next": 7.16,
+   "unit": "L",
+   "src_bluebird": "oml_next.yaml",
+   "src_next": "oml_next.yaml"
+  }
+ ]
+}

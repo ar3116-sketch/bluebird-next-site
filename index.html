@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BLUEBIRD NEXT, inside</title>
+  <meta name="description" content="X-ray comparison of the BLUEBIRD survey UAV and the BLUEBIRD NEXT concept: same wing, new insides.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2286.14%2059.00%2054.86%2041.84%22%3E%3Cpath%20fill%3D%22%238dc4e6%22%20fill-rule%3D%22evenodd%22%20d%3D%22M123.680%2C80.700%20L130.160%2C76.320%20L137.120%2C79.440%20L131.120%2C91.080%20L123.920%2C95.160%20L115.340%2C93.660%20L101.960%2C99.840%20L108.740%2C93.660%20L99.920%2C94.560%20L115.220%2C88.020%20L107.780%2C85.860%20L95.720%2C76.260%20L110.660%2C79.740%20L97.460%2C74.940%20L90.140%2C67.620%20L102.080%2C72.240%20L87.140%2C60.000%20L110.240%2C68.640%20L119.120%2C78.480%20L110.480%2C74.760%20L124.220%2C82.560%20L118.280%2C86.760%20L127.520%2C82.440%20Z%20M135.860%2C83.220%20L137.300%2C80.220%20L140.000%2C82.020%20Z%20M132.320%2C79.380%20L133.520%2C81.120%20L135.260%2C80.220%20Z%22/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d18; --panel: #0b1a2b; --line: rgba(141, 196, 230, 0.20); --ink: #eef6fc; --dim: #9fb9cf;
+      --accent: #8dc4e6;
+      --c-battery: #ff9f43; --c-brain: #ff5fa2; --c-avionics: #4da3ff; --c-camera: #3ddc97; --c-radio: #b78cff;
+      --c-motor: #aeb6c2; --c-structure: #9fb9cf;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --sans: "Inter Tight", Inter, system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { background: var(--bg); }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--sans); }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 56px 0 28px; }
+    .eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+    h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.04; letter-spacing: -0.02em; margin: 14px 0 14px; font-weight: 600; }
+    h1 span { color: var(--accent); }
+    .lede { max-width: 760px; color: var(--dim); font-size: 18px; margin: 0; }
+    .status { display: inline-block; margin-top: 18px; font: 500 12px/1 var(--mono); color: var(--dim);
+      border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; }
+
+    .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+      padding: 18px 0 14px; border-top: 1px solid var(--line); }
+    .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .seg button { background: transparent; color: var(--dim); border: 0; padding: 9px 16px; font: 500 14px var(--sans);
+      cursor: pointer; }
+    .seg button + button { border-left: 1px solid var(--line); }
+    .seg button[aria-pressed="true"] { background: rgba(141, 196, 230, .14); color: var(--ink); }
+    .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    figure img { display: block; width: 100%; height: auto; }
+    figcaption { display: flex; align-items: baseline; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    figcaption b { font-weight: 600; font-size: 17px; letter-spacing: .01em; }
+    figcaption span { font: 12px var(--mono); color: var(--accent); }
+
+    .wipe { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--panel);
+      touch-action: pan-y; user-select: none; }
+    .wipe img { display: block; width: 100%; height: auto; }
+    .wipe .top { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }
+    .wipe .bar { position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 2px; margin-left: -1px;
+      background: var(--accent); box-shadow: 0 0 12px rgba(141, 196, 230, .8); pointer-events: none; }
+    .wipe .knob { position: absolute; top: 50%; left: var(--x, 50%); width: 38px; height: 38px; margin: -19px 0 0 -19px;
+      border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); pointer-events: none;
+      display: grid; place-items: center; color: var(--accent); font: 600 14px var(--mono); }
+    .wipe .tag { position: absolute; top: 14px; font: 600 13px var(--mono); letter-spacing: .08em; padding: 6px 10px;
+      border-radius: 8px; background: rgba(6, 13, 24, .75); border: 1px solid var(--line); }
+    .wipe .tag.l { left: 14px; } .wipe .tag.r { right: 14px; color: var(--accent); }
+    .wipe input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .hint { color: var(--dim); font-size: 13px; margin: 10px 2px 0; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 16px 2px 0; font-size: 14px; color: var(--dim); }
+    .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 7px; vertical-align: -1px; }
+
+    section { padding: 48px 0 8px; }
+    h2 { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 18px; }
+    .changes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+    .card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 9px; }
+    .card h3 i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+    .card p { margin: 0; color: var(--dim); font-size: 15px; }
+    .card .ft { font: 13px var(--mono); color: var(--ink); margin-top: 10px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { text-align: right; padding: 11px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; white-space: normal; }
+    th { font: 500 12px var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .08em; }
+    td { font-variant-numeric: tabular-nums; }
+    td.n { color: var(--accent); font-weight: 600; }
+    td.d { font: 13px var(--mono); color: var(--dim); }
+    .tablewrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+
+    .notes { color: var(--dim); font-size: 14px; max-width: 900px; }
+    .notes li { margin-bottom: 8px; }
+    footer { padding: 40px 0 56px; color: var(--dim); font-size: 13px; border-top: 1px solid var(--line); margin-top: 40px; }
+    footer a { color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .wrap { padding: 0 16px; }
+      header { padding: 36px 0 20px; }
+      .pair { grid-template-columns: 1fr; }
+      .lede { font-size: 16px; }
+      th, td { padding: 9px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">Generation comparison · x-ray</div>
+      <h1>BLUEBIRD <span>→</span> BLUEBIRD NEXT</h1>
+      <p class="lede">The same 1.8 m blended wing, rebuilt inside. The phone becomes a companion computer, the
+        8-cell pack becomes 12 cells split between the nose and the bay, and the centre body grows deeper to hold them.
+        Same camera, same scale, shell rendered as glass.</p>
+      <div class="status">NEXT is a concept: layout analysed, nothing built or flown</div>
+    </header>
+
+    <div class="controls">
+      <div class="seg" role="group" aria-label="View">
+        <button data-view="iso" aria-pressed="true">3/4</button>
+        <button data-view="top" aria-pressed="false">Top</button>
+        <button data-view="side" aria-pressed="false">Side</button>
+      </div>
+      <div class="seg" role="group" aria-label="Layout">
+        <button data-mode="pair" aria-pressed="true">Side by side</button>
+        <button data-mode="wipe" aria-pressed="false">Wipe</button>
+      </div>
+    </div>
+
+    <div id="pair" class="pair">
+      <figure>
+        <figcaption><b>BLUEBIRD</b><span>rev C · detailed CAD</span></figcaption>
+        <img id="imgA" src="img/bluebird_iso.jpg" alt="BLUEBIRD x-ray, 3/4 view: phone over a single 8-cell pack, cameras in the nose">
+      </figure>
+      <figure>
+        <figcaption><b>BLUEBIRD NEXT</b><span>concept · layout study</span></figcaption>
+        <img id="imgB" src="img/next_iso.jpg" alt="BLUEBIRD NEXT x-ray, 3/4 view: companion board over an 8-cell main pack, 4-cell nose pack, new radio bays">
+      </figure>
+    </div>
+
+    <div id="wipe" class="wipe" hidden>
+      <img id="wB" src="img/next_iso.jpg" alt="BLUEBIRD NEXT x-ray">
+      <img id="wA" class="top" src="img/bluebird_iso.jpg" alt="BLUEBIRD x-ray">
+      <div class="bar"></div><div class="knob">⇆</div>
+      <span class="tag l">BLUEBIRD</span><span class="tag r">NEXT</span>
+      <input id="slider" type="range" min="0" max="100" value="50" aria-label="Wipe between BLUEBIRD and BLUEBIRD NEXT">
+    </div>
+    <p class="hint" id="hint">Both renders use one camera, so parts that move sit at the same place in both frames.</p>
+
+    <div class="legend">
+      <span><i style="background:var(--c-battery)"></i>Battery cells</span>
+      <span><i style="background:var(--c-brain)"></i>Onboard computer (phone / companion)</span>
+      <span><i style="background:var(--c-camera)"></i>Survey cameras</span>
+      <span><i style="background:var(--c-radio)"></i>Radios and links</span>
+      <span><i style="background:var(--c-avionics)"></i>Flight controller, GPS, ESC, sensors</span>
+      <span><i style="background:var(--c-motor)"></i>Motor module, servos</span>
+      <span><i style="background:var(--c-structure);opacity:.6"></i>Structure (ghosted)</span>
+    </div>
+
+    <section>
+      <h2>What changes inside</h2>
+      <div class="changes">
+        <div class="card"><h3><i style="background:var(--c-brain)"></i>Phone → companion board</h3>
+          <p>BLUEBIRD flies a Pixel phone as its mission computer, with a holder, USB hub and cooling blower. NEXT puts a
+            low-profile companion board in the same slot over the pack. The flight controller still flies the aircraft.</p>
+          <div class="ft">bay 70 × 80 × 13 mm</div></div>
+        <div class="card"><h3><i style="background:var(--c-battery)"></i>8 cells → 12 cells, split</h3>
+          <p>One 4S2P pack becomes a 4S3P of higher-capacity 21700 cells: 8 in the main bay, 4 in a new nose bay. The nose
+            cells replace the phone's forward mass, so NEXT trims with no ballast.</p>
+          <div class="ft" data-row="Usable battery energy"></div></div>
+        <div class="card"><h3><i style="background:var(--c-accent, var(--accent))"></i>Deeper centre body</h3>
+          <p>Centre-body thickness goes from 1.15 to 1.35 of the base section to fit the nose cells. Same planform, same
+            wing, fins and motor.</p>
+          <div class="ft" data-row="Centre-body depth at x 140"></div></div>
+        <div class="card"><h3><i style="background:var(--c-camera)"></i>Cameras move</h3>
+          <p>The thermal camera moves forward to the left of the nose cells, and the mapping camera moves outboard
+            beside the main pack. Both sit on printed trays.</p>
+          <div class="ft">thermal x 102 · mapping x 200, y 105 mm</div></div>
+        <div class="card"><h3><i style="background:var(--c-radio)"></i>Room for long-range links</h3>
+          <p>Bays for LTE and an Iridium satellite modem, plus the telemetry radio, all in the nose. Every component sits on a
+            tray screwed to inserts, so changing a supplier means printing a new tray.</p>
+          <div class="ft">LTE · Iridium · telemetry</div></div>
+        <div class="card"><h3><i style="background:var(--c-structure)"></i>Printed shell → glass shell</h3>
+          <p>NEXT's centre body is planned as a glass-skinned foam sandwich instead of printed panels. Its internal frames
+            are not designed yet, so the NEXT renders show no internal structure.</p>
+          <div class="ft">est. −80 g of skin</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>By the numbers</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Quantity</th><th>BLUEBIRD</th><th>NEXT</th><th>Change</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="hint">BLUEBIRD figures come from its analysis of the as-designed aircraft. NEXT figures are the same
+        analysis run on the NEXT geometry and layout. Both are analysis results, not flight-test results.</p>
+    </section>
+
+    <section>
+      <h2>How these renders were made</h2>
+      <ul class="notes">
+        <li><b>BLUEBIRD</b> is the detailed CAD of the rev C aircraft: every printed part, component and wing part, with
+          harness and fasteners left out for clarity.</li>
+        <li><b>BLUEBIRD NEXT</b> uses its own outer shape (the deeper centre body). Parts NEXT keeps unchanged (wing spars and
+          joiners, V-node, servos, motor module, ESC, flight controller, GPS, pitot, Remote ID, rangefinder) are BLUEBIRD's
+          CAD in place. The 12 cells are real 21700 cylinders at their planned positions. Every other new item is drawn as
+          its <em>bay envelope</em>, which includes the tray and clearance: the space reserved, not the part.</li>
+        <li>The colours mark systems, not materials. The shell is drawn as glowing glass so the inside reads.</li>
+      </ul>
+    </section>
+
+    <footer>
+      BLUEBIRD NEXT · concept comparison · renders from the project CAD (Blender Cycles) ·
+      <a href="https://ar3116-sketch.github.io/bluebird/">the BLUEBIRD project</a>
+    </footer>
+  </div>
+
+  <script>
+    const ALT = {
+      iso: "3/4 view", top: "top view, nose left", side: "side view, nose left"
+    };
+    let view = "iso";
+    const $ = (id) => document.getElementById(id);
+    function setView(v) {
+      view = v;
+      document.querySelectorAll("[data-view]").forEach(b => b.setAttribute("aria-pressed", b.dataset.view === v));
+      for (const [id, w] of [["imgA", "bluebird"], ["imgB", "next"], ["wA", "bluebird"], ["wB", "next"]]) {
+        $(id).src = `img/${w}_${v}.jpg`;
+        $(id).alt = `${w === "next" ? "BLUEBIRD NEXT" : "BLUEBIRD"} x-ray, ${ALT[v]}`;
+      }
+    }
+    function setMode(m) {
+      document.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", b.dataset.mode === m));
+      $("pair").hidden = m !== "pair";
+      $("wipe").hidden = m !== "wipe";
+      $("hint").textContent = m === "wipe"
+        ? "Drag across the image: left of the line is BLUEBIRD, right is NEXT."
+        : "Both renders use one camera, so parts that move sit at the same place in both frames.";
+    }
+    document.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
+    document.querySelectorAll("[data-mode]").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode)));
+    $("slider").addEventListener("input", e => $("wipe").style.setProperty("--x", e.target.value + "%"));
+    ["iso", "top", "side"].forEach(v => ["bluebird", "next"].forEach(w => { const i = new Image(); i.src = `img/${w}_${v}.jpg`; }));
+
+    fetch("data.json").then(r => r.json()).then(d => {
+      const fmt = (v, u) => `${v}${u ? (u === "%" ? " %" : " " + u) : ""}`;
+      $("rows").innerHTML = d.rows.map(r => {
+        const pct = r.bluebird ? ((r.next - r.bluebird) / r.bluebird) * 100 : 0;
+        const ch = Math.abs(pct) < 0.5 ? "same" : `${pct > 0 ? "+" : "−"}${Math.abs(pct).toFixed(0)} %`;
+        return `<tr><td>${r.label}</td><td>${fmt(r.bluebird, r.unit)}</td><td class="n">${fmt(r.next, r.unit)}</td><td class="d">${ch}</td></tr>`;
+      }).join("");
+      document.querySelectorAll("[data-row]").forEach(el => {
+        const r = d.rows.find(x => x.label === el.dataset.row);
+        if (r) el.textContent = `${fmt(r.bluebird, r.unit)} → ${fmt(r.next, r.unit)}`;
+      });
+    }).catch(() => { $("rows").innerHTML = '<tr><td colspan="4">Numbers unavailable.</td></tr>'; });
+  </script>
+</body>
+</html>

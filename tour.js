@@ -42,7 +42,7 @@ export const STOPS = [
   },
   {
     sys: "propulsion", title: "Propulsion", dir: [0.55, 0.42, 0.72], color: 0xa9c1d6,
-    text: "The centre pusher and folding prop carry over. The printed firewall is drilled for two motors: the T-Motor AT2814 flown on BLUEBIRD and a Vertiq 40-06 as a later swap, with the same 1.8 mm minimum ligament as today.",
+    text: "The centre pusher and folding prop carry over. The firewall is drilled for two motors: the T-Motor AT2814 flown on BLUEBIRD and a Vertiq 40-06 as a later swap, with the same 1.8 mm minimum ligament as today.",
     specs: [["Motor", "T-Motor AT2814 900 KV (Vertiq 40-06 pattern drilled)"], ["Prop", "11×7 folding"], ["Cruise", "L/D 11.6 at 14 m/s, 77.7 W, 89.7 km"]],
   },
   {

@@ -7,8 +7,8 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { createSubsystemFilter } from "./subsystems.js?v=1";
-import { STOPS } from "./tour.js?v=24";
-import { SHOTS, FILM } from "./shots.js?v=44";
+import { STOPS } from "./tour.js?v=25";
+import { SHOTS, FILM } from "./shots.js?v=45";
 
 const ASSET_VERSION = "1";                                    // bump when the model is rebuilt (cache busting)
 const canvas = document.getElementById("view");
@@ -638,7 +638,7 @@ frame();
 const QUALITIES = [
   ["Companion, not a phone", "A QCS6490-class companion board replaces the phone in its slot over the pack. It runs both cameras, detection and the mission logic, and records video on board in short segments so a power cut loses at most one. Flight control and every failsafe stay on the autopilot, independently of the companion, as on BLUEBIRD."],
   ["Twelve cells, balanced", "Twelve Molicel P50B cells in a split 4S3P: eight in the main bay, four in a new nose bay that the deeper centre body makes room for. 172.8 Wh usable against 103.7 Wh, 89.7 km at the 14 m/s survey speed against 57.6 km, at the same 2.65 kg. The nose cells replace the phone's forward mass, so the aircraft balances with no ballast."],
-  ["Swap-ready bays", "The moulds make only the shell. Every component sits on a printed tray screwed into heat-set inserts in frames bonded at layup, with plugged connectors, and every bay is sized for the larger of two candidate parts. Changing a supplier is a new tray print, not a new mould."],
+  ["Swap-ready bays", "Every component sits on a molded tray screwed into heat-set inserts in frames bonded at layup, with plugged connectors, and every bay is sized for the larger of two candidate parts. Changing a supplier needs only a new tray mold, printed in-house; the shell molds stay."],
   ["Links for long range", "Bays for 915 MHz telemetry, 2.4 GHz RC, LTE and an Iridium satellite modem, all inside an RF-transparent glass shell. Flights beyond visual line of sight still need FAA approval; NEXT is designed to be ready for it, not approved for it."],
 ];
 const Q_SLOTS = ["q-companion", "q-power", "q-swap", "q-links"];

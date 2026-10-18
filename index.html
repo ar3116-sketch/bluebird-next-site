@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BLUEBIRD NEXT</title>
-  <meta name="description" content="BLUEBIRD NEXT: a concept for the next BLUEBIRD survey drone, with a companion computer, a 12-cell split battery and long-range links in the same 1.8 m blended wing.">
+  <meta name="description" content="BLUEBIRD NEXT: the BLUEBIRD survey drone reworked for next-generation capability and built to scale, with an onboard companion computer, a 12-cell split battery, long-range links and a molded shell in a deeper centre body.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2286.14%2059.00%2054.86%2041.84%22%3E%3Cpath%20fill%3D%22%235b8cff%22%20fill-rule%3D%22evenodd%22%20d%3D%22M123.680%2C80.700%20L130.160%2C76.320%20L137.120%2C79.440%20L131.120%2C91.080%20L123.920%2C95.160%20L115.340%2C93.660%20L101.960%2C99.840%20L108.740%2C93.660%20L99.920%2C94.560%20L115.220%2C88.020%20L107.780%2C85.860%20L95.720%2C76.260%20L110.660%2C79.740%20L97.460%2C74.940%20L90.140%2C67.620%20L102.080%2C72.240%20L87.140%2C60.000%20L110.240%2C68.640%20L119.120%2C78.480%20L110.480%2C74.760%20L124.220%2C82.560%20L118.280%2C86.760%20L127.520%2C82.440%20Z%20M135.860%2C83.220%20L137.300%2C80.220%20L140.000%2C82.020%20Z%20M132.320%2C79.380%20L133.520%2C81.120%20L135.260%2C80.220%20Z%22/%3E%3C/svg%3E">
-  <meta property="og:title" content="BLUEBIRD NEXT: the same wing, rebuilt inside">
-  <meta property="og:description" content="Concept for the next BLUEBIRD: companion computer instead of a phone, 12 cells split between the bay and the nose, 89.7 km at survey speed (analysis). Not built or flown.">
+  <meta property="og:title" content="BLUEBIRD NEXT: reworked for range, autonomy and production">
+  <meta property="og:description" content="Concept for the next BLUEBIRD: an onboard companion computer instead of a phone, 12 cells in a deeper centre body, 89.7 km at survey speed (analysis), and a molded shell made for production. Not built or flown.">
   <meta property="og:image" content="https://ar3116-sketch.github.io/bluebird-next-site/assets/renders/card_next_sky2.jpg">
   <meta name="theme-color" content="#050a1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=5">
   <script type="importmap">
     { "imports": {
         "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
@@ -24,7 +24,7 @@
 <body>
   <header class="nav">
     <a class="brand" href="#top" aria-label="BLUEBIRD NEXT home"><svg class="mark" viewBox="86.14 59.00 54.86 41.84" aria-hidden="true"><path fill-rule="evenodd" d="M123.680,80.700 L130.160,76.320 L137.120,79.440 L131.120,91.080 L123.920,95.160 L115.340,93.660 L101.960,99.840 L108.740,93.660 L99.920,94.560 L115.220,88.020 L107.780,85.860 L95.720,76.260 L110.660,79.740 L97.460,74.940 L90.140,67.620 L102.080,72.240 L87.140,60.000 L110.240,68.640 L119.120,78.480 L110.480,74.760 L124.220,82.560 L118.280,86.760 L127.520,82.440 Z M135.860,83.220 L137.300,80.220 L140.000,82.020 Z M132.320,79.380 L133.520,81.120 L135.260,80.220 Z"/></svg><svg class="word" viewBox="77.70 105.70 80.60 11.10" aria-hidden="true"><path fill-rule="evenodd" d="M86.000,106.000 L87.552,107.365 L87.552,111.040 L87.194,111.355 L87.552,111.670 L87.552,115.135 L86.000,116.500 L80.866,116.500 L78.000,116.500 L78.000,110.410 L78.000,106.000 Z M88.985,116.500 L88.985,106.000 L91.851,106.000 L91.851,114.085 L98.537,114.085 L96.866,116.500 Z M106.657,113.980 L106.657,106.000 L109.522,106.000 L109.522,115.030 L107.851,116.500 L101.642,116.500 L99.970,115.030 L99.970,106.000 L102.836,106.000 L102.836,113.980 Z M117.522,112.405 L113.821,112.405 L113.821,114.085 L120.507,114.085 L118.716,116.500 L110.955,116.500 L110.955,106.000 L120.507,106.000 L118.716,108.415 L113.821,108.415 L113.821,110.095 L119.075,110.095 Z M129.940,106.000 L131.493,107.365 L131.493,111.040 L131.134,111.355 L131.493,111.670 L131.493,115.135 L129.940,116.500 L124.806,116.500 L121.940,116.500 L121.940,110.410 L121.940,106.000 Z M132.925,116.500 L132.925,106.000 L135.791,106.000 L135.791,116.500 Z M145.343,112.300 L145.104,112.300 L147.015,116.500 L143.552,116.500 L140.209,112.825 L140.607,112.300 L140.090,112.300 L140.090,116.500 L137.224,116.500 L137.224,106.000 L145.224,106.000 L146.776,107.365 L146.776,111.040 Z M155.970,116.500 L148.448,116.500 L148.448,106.000 L155.970,106.000 L158.000,107.890 L158.000,114.610 Z M84.687,110.095 L84.687,108.100 L80.866,108.100 L80.866,110.095 Z M80.866,112.720 L80.866,114.400 L84.687,114.400 L84.687,112.720 Z M128.627,110.095 L128.627,108.100 L124.806,108.100 L124.806,110.095 Z M124.806,112.720 L124.806,114.400 L128.627,114.400 L128.627,112.720 Z M143.910,110.095 L143.910,108.100 L140.090,108.100 L140.090,110.095 Z M155.134,109.045 L154.537,108.415 L151.313,108.415 L151.313,114.085 L154.537,114.085 L155.134,113.455 Z"/></svg></a>
-    <nav class="links"><a href="#system">System</a><a href="#qualities">Design</a><a href="#compare">Inside</a><a href="#uses">Uses</a><a href="#status">Status</a></nav>
+    <nav class="links"><a href="#system">System</a><a href="#qualities">Design</a><a href="#compare">Inside</a><a href="#scale">Scale</a><a href="#uses">Uses</a><a href="#status">Status</a></nav>
     <a class="nav-cta" href="#contact">Contact</a>
   </header>
 
@@ -44,15 +44,15 @@
       <span class="hero-lbl l"><b>BLUEBIRD</b>Rev C</span>
       <span class="hero-lbl r"><b>BLUEBIRD <i>NEXT</i></b>Concept</span>
       </div>
-      <figcaption id="hero-cap"><span class="tag">Render</span>Same 1.8 m wing, rebuilt inside. Neither aircraft shown has been built; NEXT is a concept.</figcaption>
+      <figcaption id="hero-cap"><span class="tag">Render</span>Two generations: the BLUEBIRD testbed (left) and NEXT (right), reworked for capability and for production. Neither aircraft shown has been built; NEXT is a concept.</figcaption>
     </figure>
     <div class="meta-row">
       <div class="meta"><span>Long-range survey UAV</span><span class="dim">[ Concept ]</span>
         <span class="stage-tag"><span class="dot"></span>Concept: layout analysed, nothing built or flown</span></div>
-      <p class="meta-text">BLUEBIRD NEXT is the next version of the BLUEBIRD survey drone: the same 1.8 m blended wing, rebuilt
-        inside. A companion computer replaces the phone, twelve cells split between the bay and the nose replace eight, and
-        bays for LTE and satellite links sit in a deeper centre body. The analysis says 89.7 km at survey speed, against
-        BLUEBIRD's 57.6.</p>
+      <p class="meta-text">BLUEBIRD NEXT is BLUEBIRD reworked for the next generation: more capability on every flight, in an
+        airframe made to be built in quantity. A new, deeper centre body carries twelve cells instead of eight, an onboard
+        companion computer replaces the phone, and new bays take LTE and satellite links. The shell comes out of molds
+        instead of off a printer. The analysis says 89.7 km at survey speed, against BLUEBIRD's 57.6.</p>
       <a class="down" href="#flight" aria-label="Skip to the flight sequence">&darr;</a>
     </div>
   </section>
@@ -183,7 +183,8 @@
   <!-- ====================== x-ray comparison (was the interim page) ====================== -->
   <section id="compare" class="wrap section cmp">
     <h2 class="h2">BLUEBIRD &rarr; NEXT, inside</h2>
-    <p class="cmp-lede">The same 1.8 m blended wing, rebuilt inside. Same camera, same scale, shell rendered as glass.</p>
+    <p class="cmp-lede">Reworked from the inside out: a deeper centre body, a new onboard computer, half again as many cells and new
+      radio bays, in a shell planned for molds. Both renders use the same camera and scale, with the shell drawn as glass.</p>
       <div class="controls">
         <div class="seg" role="group" aria-label="View">
           <button data-view="iso" aria-pressed="true">3/4</button>
@@ -238,16 +239,16 @@
               cells replace the phone's forward mass, so NEXT trims with no ballast.</p>
             <div class="ft" data-row="Usable battery energy"></div></div>
           <div class="cmp-card"><h3><i style="background:var(--c-accent, var(--accent))"></i>Deeper centre body</h3>
-            <p>Centre-body thickness goes from 1.15 to 1.35 of the base section to fit the nose cells. Same planform, same
-              wing, fins and motor.</p>
+            <p>Centre-body thickness goes from 1.15 to 1.35 of the base section to fit the nose cells: a new body shape
+              with its own molds. The planform, outer wing, fins and motor carry over from BLUEBIRD.</p>
             <div class="ft" data-row="Centre-body depth at x 140"></div></div>
           <div class="cmp-card"><h3><i style="background:var(--c-camera)"></i>Cameras move</h3>
             <p>The thermal camera moves forward to the left of the nose cells, and the mapping camera moves outboard
-              beside the main pack. Both sit on printed trays.</p>
+              beside the main pack. Both sit on molded trays.</p>
             <div class="ft">thermal x 102 · mapping x 200, y 105 mm</div></div>
           <div class="cmp-card"><h3><i style="background:var(--c-radio)"></i>Room for long-range links</h3>
             <p>Bays for LTE and an Iridium satellite modem, plus the telemetry radio, all in the nose. Every component sits on a
-              tray screwed to inserts, so changing a supplier means printing a new tray.</p>
+              tray screwed to inserts, so changing a supplier means a new tray, not a new shell.</p>
             <div class="ft">LTE · Iridium · telemetry</div></div>
           <div class="cmp-card"><h3><i style="background:var(--c-structure)"></i>Printed shell → glass shell</h3>
             <p>NEXT's centre body is planned as a glass-skinned foam sandwich instead of printed panels. The frames and
@@ -277,13 +278,49 @@
             V-node, servos, ESC, flight controller, GPS, pitot, Remote ID, rangefinder, wiring) are BLUEBIRD's CAD, moved
             into the deeper body. The new parts are modelled from datasheet sizes and placed at the planned layout: both packs
             cell by cell with their nickel strips, the companion board and heatsink, both cameras with their lenses and
-            mounts, the LTE, satellite and telemetry radios with antennas, and the printed trays, frames, inserts and screws
+            mounts, the LTE, satellite and telemetry radios with antennas, and the trays, frames, inserts and screws
             that hold them. Every part is checked to sit inside the shell without touching another. The internal structure
             is still a concept, not a finished design.</li>
           <li>The colours mark systems, not materials. The shell is drawn as glowing glass so the inside reads.</li>
         </ul>
       </div>
 
+  </section>
+
+  <!-- ============================ built to scale ============================ -->
+  <section id="scale" class="wrap section cmp">
+    <h2 class="h2">Built to scale</h2>
+    <p class="cmp-lede">BLUEBIRD is a testbed: its centre body is printed piece by piece and bonded by hand, which suits
+      research and slows production. NEXT is designed from the start to be built in quantity.</p>
+    <div class="scale-stats">
+      <div class="scale-stat"><span class="k">BLUEBIRD testbed</span><b>~1 week</b><span>per aircraft · about 86 h of printing</span></div>
+      <div class="scale-stat hi"><span class="k">BLUEBIRD NEXT</span><b>~2 days</b><span>per aircraft · molded shell and trays, no printed parts</span></div>
+      <div class="scale-stat hi"><span class="k">Per mold set</span><b>~20 / month</b><span>add a mold set to add capacity</span></div>
+    </div>
+    <div class="changes">
+      <div class="cmp-card"><h3><i style="background:var(--c-structure)"></i>Molded, not printed</h3>
+        <p>The centre body is a glass-skinned foam sandwich vacuum-bagged in female molds. Glass keeps the shell
+          transparent to radio, so the antennas stay inside, and the layup is planned at about 80 g lighter than the
+          printed skins.</p>
+        <div class="ft">est. 110 g shell vs 190 g printed</div></div>
+      <div class="cmp-card"><h3><i style="background:var(--accent)"></i>Print the molds, not the aircraft</h3>
+        <p>We print the molds ourselves, so a new set is quick to make in-house. Output grows by printing another mold
+          set rather than printing more aircraft; a glass layup line suits a few hundred aircraft a year, and molded foam
+          is the step beyond about 1,000 a year.</p>
+        <div class="ft">~20 aircraft / month per mold set</div></div>
+      <div class="cmp-card"><h3><i style="background:var(--c-avionics)"></i>Swap-ready bays</h3>
+        <p>Every component sits on a molded tray screwed into inserts in frames bonded at layup, with plug-in
+          connectors, and each bay is sized for the larger of two candidate parts. A new supplier, or a US-made part,
+          needs only a new tray mold, printed in-house; the shell molds stay.</p>
+        <div class="ft">6 parts with a drop-in second source</div></div>
+      <div class="cmp-card"><h3><i style="background:var(--c-radio)"></i>Capability as a configuration</h3>
+        <p>The same airframe flies line-of-sight surveys or carries the long-range kit (LTE, Iridium satellite and
+          ADS-B In) in bays that are already there. The motor firewall is drilled for a second motor, so the
+          propulsion can change without new tooling.</p>
+        <div class="ft">one airframe, several configurations</div></div>
+    </div>
+    <p class="hint">Build times and mold output are team estimates for a design that has not been built. BLUEBIRD's
+      86 h comes from its design-for-manufacture review.</p>
   </section>
 
   <!-- ============================== uses ============================== -->
@@ -298,8 +335,8 @@
       <article class="use">
         <h3>Agriculture</h3>
         <div data-slot="use-agriculture" class="media ph tall" data-ph="Illustration: crop survey"></div>
-        <p>Mapping of fields and pasture with the downward mapping camera, on the same printed, field-repairable airframe
-          as BLUEBIRD.</p>
+        <p>Mapping of fields and pasture with the downward mapping camera. Processing and video recording run on the
+          companion board in flight.</p>
       </article>
     </div>
   </section>
@@ -348,7 +385,7 @@
       an open survey drone for conservation and agriculture.</p>
     </div>
     <div class="f-cols">
-      <div><h4>Project</h4><a href="#system">System</a><a href="#qualities">Design</a><a href="#compare">Inside</a><a href="#uses">Uses</a><a href="#status">Status</a></div>
+      <div><h4>Project</h4><a href="#system">System</a><a href="#qualities">Design</a><a href="#compare">Inside</a><a href="#scale">Scale</a><a href="#uses">Uses</a><a href="#status">Status</a></div>
       <div><h4>Links</h4><a href="https://github.com/ar3116-sketch" rel="noopener">GitHub</a>
         <a href="https://ar3116-sketch.github.io/bluebird/" rel="noopener">BLUEBIRD</a>
         <a href="https://ar3116-sketch.github.io" rel="noopener">Personal site</a></div>
@@ -359,7 +396,7 @@
     <p class="copy">&copy; 2026 BLUEBIRD project &middot; renders from the project CAD; NEXT is a concept</p>
   </footer>
 
-  <script type="module" src="main.js?v=2"></script>
+  <script type="module" src="main.js?v=3"></script>
   <script src="compare.js?v=1"></script>
 </body>
 </html>

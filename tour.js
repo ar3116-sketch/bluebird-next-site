@@ -17,13 +17,13 @@ export const STOPS = [
   },
   {
     sys: "compute", title: "Compute", dir: [0.35, 0.85, -0.4], color: 0x7cf2c9,
-    text: "The flight controller still flies; a companion board now thinks. ArduPlane on the Matek H743 owns stabilisation, navigation and every failsafe. The phone, its holder, USB hub and blower are gone: a Qualcomm QCS6490-class board on a low carrier takes their slot over the pack, runs both cameras and records video on board.",
-    specs: [["Autopilot", "Matek H743-WING, ArduPlane"], ["Companion", "QCS6490-class module, ≤ 12 mm stack, ≈ 5 W (est.)"], ["Bay", "70 × 80 × 13 mm, under the hatch"]],
+    text: "The flight controller still flies; a companion board now thinks. ArduPlane on the Matek H743 owns stabilisation, navigation and every failsafe. The phone, its holder, USB hub and blower are gone: a Qualcomm QCS6490-class board on a low carrier rides on the underside of the hatch, where the phone did, runs both cameras and records video on board. Its leads cross the hinge in service loops, so opening the hatch swings it clear of the packs.",
+    specs: [["Autopilot", "Matek H743-WING, ArduPlane"], ["Companion", "QCS6490-class module, ≤ 12 mm stack, ≈ 5 W (est.)"], ["Bay", "70 × 80 × 13 mm, on the hatch underside"]],
   },
   {
     sys: "sensors", title: "Sensors + payload", dir: [0.82, 0.02, -0.57], color: 0xc7a4ff, beams: true, zoom: 0.9,
-    text: "The two cameras move to make room for the nose cells: the thermal core forward and left at x 102, the mapping camera outboard beside the main pack at x 200. Both look straight down (fields of view drawn shortened). With 67 % more usable energy, one sortie maps about 352 ha of a real field at 3.9 cm/px, against 220 ha for BLUEBIRD.",
-    specs: [["Mapping", "M12 lens behind a 1 mm clear window; 3.9 cm/px at 100 m"], ["Thermal", "256 × 192 core, open aperture"], ["Survey area", "≈ 352 ha per sortie (BLUEBIRD ≈ 220)"]],
+    text: "The two cameras move to make room for the nose cells: the thermal core forward and left at x 102, the mapping camera outboard beside the main pack at x 200. Both look straight down (fields of view drawn shortened). With 67 % more usable energy, one sortie maps about 348 ha of a real field at 3.9 cm/px, against 220 ha for BLUEBIRD.",
+    specs: [["Mapping", "M12 lens behind a 1 mm clear window; 3.9 cm/px at 100 m"], ["Thermal", "256 × 192 core, open aperture"], ["Survey area", "≈ 348 ha per sortie (BLUEBIRD ≈ 220)"]],
   },
   {
     sys: "comms", title: "Comms", dir: [-0.2, 0.9, 0.3], color: 0xffb86b,
@@ -37,8 +37,8 @@ export const STOPS = [
   },
   {
     sys: "power", title: "Power", dir: [-0.35, 0.85, -0.3], color: 0xffd54a,
-    text: "Twelve Molicel P50B 21700 cells in a split 4S3P: eight on the slide tray in the main bay, four in a new bay in the nose, wired in parallel. The nose cells are the forward mass the phone used to provide, so NEXT balances at its target with no ballast.",
-    specs: [["Pack", "Molicel P50B 4S3P (8 + 4), 216 Wh rated"], ["Usable", "172.8 Wh, 20 % kept in reserve (BLUEBIRD 103.7)"], ["Balance", "CG x 313.0 mm, 8.0 % static margin, 0 g ballast"]],
+    text: "Twelve Molicel P50B 21700 cells in two removable packs: eight in the main bay, four in a new bay in the nose, each on one plug and joined at a power board through ideal diodes. Open the hatch, pull two plugs and both packs lift straight out; or leave them in and charge through the port under the hatch, which keeps the pair matched. The nose cells are the forward mass the phone used to provide, so NEXT balances at its target with no ballast.",
+    specs: [["Packs", "P50B 4S2P 144 Wh + 4S1P 72 Wh, both removable"], ["Usable", "172.8 Wh, 20 % kept in reserve (BLUEBIRD 103.7)"], ["Balance", "CG x 313.0 mm, 8.0 % static margin, 0 g ballast"]],
   },
   {
     sys: "propulsion", title: "Propulsion", dir: [0.55, 0.42, 0.72], color: 0xa9c1d6,
@@ -47,7 +47,7 @@ export const STOPS = [
   },
   {
     sys: "landing", title: "Launch + landing", dir: [0.82, -0.3, 0.35], color: 0x5fd3a0,
-    text: "NEXT weighs what BLUEBIRD weighs, 2.65 kg, so it keeps the replaceable TPU skid sled, the belly cones and the passive launch dolly. Its stall speed is unchanged too.",
-    specs: [["Skid", "TPU-95A sled (BLUEBIRD's)"], ["Stall", "9.5 m/s untrimmed, ≈ 9.9 trimmed"], ["Launch", "passive dolly or hand / bungee"]],
+    text: "NEXT weighs 2.70 kg, 50 g more than BLUEBIRD, so it keeps the replaceable TPU skid sled, the belly cones and the passive launch dolly. Its stall speed rises by 0.1 m/s.",
+    specs: [["Skid", "TPU-95A sled (BLUEBIRD's)"], ["Stall", "9.6 m/s untrimmed, ≈ 10.0 trimmed"], ["Launch", "passive dolly or hand / bungee"]],
   },
 ];

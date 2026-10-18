@@ -26,7 +26,7 @@
     $("slider").addEventListener("input", e => $("wipe").style.setProperty("--x", e.target.value + "%"));
     ["iso", "top", "side"].forEach(v => ["bluebird", "next"].forEach(w => { const i = new Image(); i.src = `img/${w}_${v}.jpg`; }));
 
-    fetch("data.json").then(r => r.json()).then(d => {
+    fetch("data.json?v=2").then(r => r.json()).then(d => {
       const fmt = (v, u) => `${v}${u ? (u === "%" ? " %" : " " + u) : ""}`;
       $("rows").innerHTML = d.rows.map(r => {
         const pct = r.bluebird ? ((r.next - r.bluebird) / r.bluebird) * 100 : 0;

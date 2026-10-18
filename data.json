@@ -3,7 +3,7 @@
   {
    "label": "Range at 14 m/s cruise",
    "bluebird": 57.6,
-   "next": 89.7,
+   "next": 88.8,
    "unit": "km",
    "src_bluebird": "sparrow aero/results.yaml",
    "src_next": "aero/next/results.yaml"
@@ -11,7 +11,7 @@
   {
    "label": "Endurance at cruise",
    "bluebird": 1.14,
-   "next": 1.78,
+   "next": 1.76,
    "unit": "h",
    "src_bluebird": "sparrow aero/results.yaml",
    "src_next": "aero/next/results.yaml"
@@ -27,7 +27,7 @@
   {
    "label": "Cruise electrical power",
    "bluebird": 72.5,
-   "next": 77.7,
+   "next": 78.5,
    "unit": "W",
    "src_bluebird": "sparrow aero/results.yaml",
    "src_next": "aero/next/results.yaml"
@@ -35,7 +35,7 @@
   {
    "label": "Take-off mass",
    "bluebird": 2.65,
-   "next": 2.65,
+   "next": 2.7,
    "unit": "kg",
    "src_bluebird": "sparrow aircraft_mass.yaml",
    "src_next": "next_fit.yaml layout_1p35"
@@ -51,7 +51,7 @@
   {
    "label": "Stall speed (1 g)",
    "bluebird": 9.5,
-   "next": 9.5,
+   "next": 9.6,
    "unit": "m/s",
    "src_bluebird": "sparrow aero/results.yaml",
    "src_next": "aero/next/results.yaml"
@@ -59,7 +59,7 @@
   {
    "label": "Cruise L/D",
    "bluebird": 11.7,
-   "next": 11.6,
+   "next": 11.7,
    "unit": "",
    "src_bluebird": "sparrow aero/results.yaml",
    "src_next": "aero/next/results.yaml"

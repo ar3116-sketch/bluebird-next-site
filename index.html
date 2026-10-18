@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BLUEBIRD NEXT</title>
-  <meta name="description" content="BLUEBIRD NEXT: the BLUEBIRD survey drone reworked for next-generation capability and built to scale, with an onboard companion computer, a 12-cell split battery, long-range links and a molded shell in a deeper centre body.">
+  <meta name="description" content="BLUEBIRD NEXT: the BLUEBIRD survey drone reworked for next-generation capability and built to scale, with an onboard companion computer, a 12-cell battery in two swap-out packs with an airframe charge port, long-range links and a molded shell in a deeper centre body.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2286.14%2059.00%2054.86%2041.84%22%3E%3Cpath%20fill%3D%22%235b8cff%22%20fill-rule%3D%22evenodd%22%20d%3D%22M123.680%2C80.700%20L130.160%2C76.320%20L137.120%2C79.440%20L131.120%2C91.080%20L123.920%2C95.160%20L115.340%2C93.660%20L101.960%2C99.840%20L108.740%2C93.660%20L99.920%2C94.560%20L115.220%2C88.020%20L107.780%2C85.860%20L95.720%2C76.260%20L110.660%2C79.740%20L97.460%2C74.940%20L90.140%2C67.620%20L102.080%2C72.240%20L87.140%2C60.000%20L110.240%2C68.640%20L119.120%2C78.480%20L110.480%2C74.760%20L124.220%2C82.560%20L118.280%2C86.760%20L127.520%2C82.440%20Z%20M135.860%2C83.220%20L137.300%2C80.220%20L140.000%2C82.020%20Z%20M132.320%2C79.380%20L133.520%2C81.120%20L135.260%2C80.220%20Z%22/%3E%3C/svg%3E">
   <meta property="og:title" content="BLUEBIRD NEXT: reworked for range, autonomy and production">
-  <meta property="og:description" content="Concept for the next BLUEBIRD: an onboard companion computer instead of a phone, 12 cells in a deeper centre body, 89.7 km at survey speed (analysis), and a molded shell made for production. Not built or flown.">
+  <meta property="og:description" content="Concept for the next BLUEBIRD: an onboard companion computer instead of a phone, 12 cells in two removable packs, 88.8 km at survey speed (analysis), and a molded shell made for production. Not built or flown.">
   <meta property="og:image" content="https://ar3116-sketch.github.io/bluebird-next-site/assets/renders/card_next_sky2.jpg">
   <meta name="theme-color" content="#050a1c">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +52,7 @@
       <p class="meta-text">BLUEBIRD NEXT is BLUEBIRD reworked for the next generation: more capability on every flight, in an
         airframe made to be built in quantity. A new, deeper centre body carries twelve cells instead of eight, an onboard
         companion computer replaces the phone, and new bays take LTE and satellite links. The shell comes out of molds
-        instead of off a printer. The analysis says 89.7 km at survey speed, against BLUEBIRD's 57.6.</p>
+        instead of off a printer. The analysis says 88.8 km at survey speed, against BLUEBIRD's 57.6.</p>
       <a class="down" href="#flight" aria-label="Skip to the flight sequence">&darr;</a>
     </div>
   </section>
@@ -93,8 +93,8 @@
         <div data-slot="card-aircraft" class="media ph" data-ph="Render: aircraft"></div>
         <dl>
           <div><dt>Span</dt><dd>1.8 m</dd></div>
-          <div><dt>Range at 14 m/s</dt><dd>89.7 km (analysis)</dd></div>
-          <div><dt>Take-off mass</dt><dd>2.65 kg</dd></div>
+          <div><dt>Range at 14 m/s</dt><dd>88.8 km (analysis)</dd></div>
+          <div><dt>Take-off mass</dt><dd>2.70 kg</dd></div>
         </dl>
       </article>
       <article class="card">
@@ -110,9 +110,9 @@
         <h3>Split battery</h3>
         <div data-slot="card-power" class="media ph" data-ph="Render: battery"></div>
         <dl>
-          <div><dt>Cells</dt><dd>12 × Molicel P50B</dd></div>
+          <div><dt>Cells</dt><dd>12 × P50B, 2 removable packs</dd></div>
           <div><dt>Usable energy</dt><dd>172.8 Wh</dd></div>
-          <div><dt>Endurance</dt><dd>1.78 h at 14 m/s</dd></div>
+          <div><dt>Charging</dt><dd>In place, or swap the packs</dd></div>
         </dl>
       </article>
       <article class="card">
@@ -231,12 +231,15 @@
         <h3 class="cmp-h">What changes inside</h3>
         <div class="changes">
           <div class="cmp-card"><h3><i style="background:var(--c-brain)"></i>Phone → companion board</h3>
-            <p>BLUEBIRD flies a Pixel phone as its mission computer, with a holder, USB hub and cooling blower. NEXT puts a
-              low-profile companion board in the same slot over the pack. The flight controller still flies the aircraft.</p>
-            <div class="ft">bay 70 × 80 × 13 mm</div></div>
+            <p>BLUEBIRD flies a Pixel phone as its mission computer, with a holder, USB hub and cooling blower. NEXT carries a
+              low-profile companion board on the underside of the hatch, where the phone rode, so it swings away with the
+              hatch and leaves both packs free to lift out. The flight controller still flies the aircraft.</p>
+            <div class="ft">bay 70 × 80 × 13 mm · on the hatch</div></div>
           <div class="cmp-card"><h3><i style="background:var(--c-battery)"></i>8 cells → 12 cells, split</h3>
-            <p>One 4S2P pack becomes a 4S3P of higher-capacity 21700 cells: 8 in the main bay, 4 in a new nose bay. The nose
-              cells replace the phone's forward mass, so NEXT trims with no ballast.</p>
+            <p>One 4S2P pack becomes 12 higher-capacity 21700 cells in two removable packs, 8 in the main bay and 4 in a new
+              nose bay, each on one plug. Charge both in place through a port under the hatch, or swap in a charged pair; ideal
+              diodes keep a mismatched pair from cross-charging. The nose cells replace the phone's forward mass, so NEXT trims
+              with no ballast.</p>
             <div class="ft" data-row="Usable battery energy"></div></div>
           <div class="cmp-card"><h3><i style="background:var(--c-accent, var(--accent))"></i>Deeper centre body</h3>
             <p>Centre-body thickness goes from 1.15 to 1.35 of the base section to fit the nose cells: a new body shape
@@ -352,8 +355,9 @@
           <h4>Done</h4>
           <ol class="ms-ul">
             <li><b>Size.</b> 1.8 m kept after a span sweep from 1.8 to 2.34 m.</li>
-            <li><b>Shape.</b> Deeper centre body (1.35) lofted and re-analysed: 89.7 km, stall 9.5 m/s.</li>
+            <li><b>Shape.</b> Deeper centre body (1.35) lofted and re-analysed: 88.8 km, stall 9.6 m/s.</li>
             <li><b>Layout.</b> Every part placed for balance: CG 313.0 mm, 8.0 % margin, no ballast.</li>
+            <li><b>Service.</b> Both packs lift straight out with only the hatch open: 3.0 and 2.5 mm to spare, 0 parts in the way.</li>
             <li><b>Internals.</b> 62 new parts modelled and checked: 0 outside the shell, 0 clashes.</li>
           </ol>
         </div>
@@ -396,7 +400,7 @@
     <p class="copy">&copy; 2026 BLUEBIRD project &middot; renders from the project CAD; NEXT is a concept</p>
   </footer>
 
-  <script type="module" src="main.js?v=3"></script>
-  <script src="compare.js?v=1"></script>
+  <script type="module" src="main.js?v=4"></script>
+  <script src="compare.js?v=2"></script>
 </body>
 </html>

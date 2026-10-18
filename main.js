@@ -7,10 +7,10 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { createSubsystemFilter } from "./subsystems.js?v=1";
-import { STOPS } from "./tour.js?v=25";
-import { SHOTS, FILM } from "./shots.js?v=45";
+import { STOPS } from "./tour.js?v=26";
+import { SHOTS, FILM } from "./shots.js?v=46";
 
-const ASSET_VERSION = "1";                                    // bump when the model is rebuilt (cache busting)
+const ASSET_VERSION = "2";                                    // bump when the model is rebuilt (cache busting)
 const canvas = document.getElementById("view");
 const stage = canvas.parentElement;
 const flight = document.getElementById("flight");
@@ -188,7 +188,7 @@ function initExploded() {
     else if (sys === "shell") {
       if (/hatch|cover/.test(o.name)) delta.y = 0.32;
       else { delta.x = Math.sign(c.x || 1) * 0.16; delta.y = 0.06; }
-    } else if (sys === "compute") delta.y = /phone/.test(o.name) ? 0.25 : 0.15;
+    } else if (sys === "compute") delta.y = /phone|companion/.test(o.name) ? 0.25 : 0.15;   // NEXT companion rides on the hatch
     else if (sys === "power") delta.y = /battery|pack/.test(o.name) ? 0.095 : -0.08;
     else if (sys === "sensors") { delta.z = -0.12; delta.y = -0.10; }
     else if (sys === "comms" || sys === "compliance") { delta.x = Math.sign(c.x || 1) * 0.15; delta.y = 0.16; }
@@ -636,8 +636,8 @@ frame();
 
 // ---------------------------------------------------------------- page bits
 const QUALITIES = [
-  ["Companion, not a phone", "A QCS6490-class companion board replaces the phone in its slot over the pack. It runs both cameras, detection and the mission logic, and records video on board in short segments so a power cut loses at most one. Flight control and every failsafe stay on the autopilot, independently of the companion, as on BLUEBIRD."],
-  ["Twelve cells, balanced", "Twelve Molicel P50B cells in a split 4S3P: eight in the main bay, four in a new nose bay that the deeper centre body makes room for. 172.8 Wh usable against 103.7 Wh, 89.7 km at the 14 m/s survey speed against 57.6 km, at the same 2.65 kg. The nose cells replace the phone's forward mass, so the aircraft balances with no ballast."],
+  ["Companion, not a phone", "A QCS6490-class companion board replaces the phone and rides on the hatch underside, as the phone did, so it swings clear when the hatch opens. It runs both cameras, detection and the mission logic, and records video on board in short segments so a power cut loses at most one. Flight control and every failsafe stay on the autopilot, independently of the companion, as on BLUEBIRD."],
+  ["Twelve cells, balanced", "Twelve Molicel P50B cells in two removable packs: eight in the main bay, four in a new nose bay that the deeper centre body makes room for. Charge them in place through a port under the hatch, or swap in a charged pair, tool-free (target 30 s, as BLUEBIRD). 172.8 Wh usable against 103.7 Wh, 88.8 km at the 14 m/s survey speed against 57.6 km, at 2.70 kg against 2.65. The nose cells replace the phone's forward mass, so the aircraft balances with no ballast."],
   ["Swap-ready bays", "Every component sits on a molded tray screwed into heat-set inserts in frames bonded at layup, with plugged connectors, and every bay is sized for the larger of two candidate parts. Changing a supplier needs only a new tray mold, printed in-house; the shell molds stay."],
   ["Links for long range", "Bays for 915 MHz telemetry, 2.4 GHz RC, LTE and an Iridium satellite modem, all inside an RF-transparent glass shell. Flights beyond visual line of sight still need FAA approval; NEXT is designed to be ready for it, not approved for it."],
 ];
